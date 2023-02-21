@@ -39,7 +39,7 @@ controller.getAll = async (req, res) => {
 controller.getInCategory = async (req, res) => {
     const category_id = categories(req, res)
     try {
-        const key = "tes123"
+        // const key = "tes123"
         // if(req.query.apikey === key) {
             await model.question.findAll({
                 where: {
