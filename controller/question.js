@@ -5,7 +5,7 @@ const controller = {}
 
 controller.getAll = async (req, res) => {
     try {
-        // if(req.query.apikey === process.env.API_KEY) {
+        if(req.query.apikey == "tes123") {
             await model.question.findAll()
             // {
             //     include: [{
@@ -24,11 +24,11 @@ controller.getAll = async (req, res) => {
                     })
                 }
             })
-        // } else {
+        } else {
         //     res.status(401).json({
         //         message: 'Unauthorized'
         //     })
-        // }
+        }
     } catch (error) {
         res.status(500).json({
             message: 'Failed to get all question',
