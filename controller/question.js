@@ -40,7 +40,7 @@ controller.getInCategory = async (req, res) => {
     const category_id = categories(req, res)
     try {
         const key = "tes123"
-        if(req.query.apikey === key) {
+        // if(req.query.apikey === key) {
             await model.question.findAll({
                 where: {
                     id_category: category_id
@@ -63,11 +63,11 @@ controller.getInCategory = async (req, res) => {
                     })
                 }
             })
-        } else {
-            res.status(401).json({
-                message: 'Unauthorized'
-            })
-        }
+        // } else {
+        //     res.status(401).json({
+        //         message: 'Unauthorized'
+        //     })
+        // }
     } catch (error) {
         res.status(500).json({
             message: 'Failed to get all question',
