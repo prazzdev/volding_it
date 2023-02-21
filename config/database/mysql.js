@@ -7,7 +7,15 @@ const conf = {
     password: 'zeVNe3NzwKeU9zo4Ddyg',
     database: 'bsrvkootqh4bl9quhuws'
 }
-const db = new Sequelize(conf)
+const local = {
+    host: 'localhost',
+    dialect: 'mysql',
+    port: 3306,
+    username: 'root',
+    password: '',
+    database: 'volding_it'
+}
+const db = new Sequelize(local)
 db
 .authenticate()
 .then(() => {

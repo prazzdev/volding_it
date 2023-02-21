@@ -162,17 +162,17 @@ controller.put = async (req, res) => {
 
 controller.delete = async (req, res) => {
     try {
-        let mahasiswa = await model.mahasiswa.destroy({
+        let question = await model.question.destroy({
             where: {
-                nim: req.params.nim
+                id: req.params.id
             }
         })
         res.status(200).json({
-            message: 'Berhasil menghapus data mahasiswa'
-        })
+            message: 'Success to delete question'
+        })  
     } catch (err) {
         res.status(500).json({
-            message: 'Gagal menghapus data mahasiswa'
+            message: 'Failed to delete question'
         })
     }
 }

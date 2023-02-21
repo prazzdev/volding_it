@@ -3,6 +3,7 @@ const http = require('http')
 const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
+const expressLayouts = require('express-ejs-layouts')
 const cors = require('cors')
 
 const port = 3002
@@ -12,11 +13,14 @@ const questionRoutes = require('./routes/question')
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
+app.set('view engine', 'ejs')
+app.use(expressLayouts)
 app.use(cors())
 app.use('/assets', express.static('assets'))
 
 app.use(`/question`, questionRoutes)
 
+app.use('/admin', )
 app.use((req, res, next) => {
     const error = new Error('Not found')
     error.status = 404

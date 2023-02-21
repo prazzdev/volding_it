@@ -8,7 +8,7 @@ const randomString = require('randomstring')
 const multer = require('multer')
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './uploads/questions/')
+        cb(null, './assets/questions/')
     },
     filename: function (req, file, cb) {
         let randomName = randomString.generate()
@@ -22,6 +22,6 @@ router.get('/:category', controller.question.getInCategory)
 router.get('/:category/:stage', controller.question.getInStageOfCategory)
 router.post('/', upload.single('image'), controller.question.post)
 // router.put('/:nim', controller.mahasiswa.put)
-// router.delete('/:nim', controller.mahasiswa.delete)
+router.delete('/:id', controller.question.delete)
 
 module.exports = router
