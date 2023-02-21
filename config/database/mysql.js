@@ -15,7 +15,7 @@ const local = {
     password: '',
     database: 'volding_it'
 }
-const db = new Sequelize(local)
+const db = new Sequelize(conf)
 db
 .authenticate()
 .then(() => {

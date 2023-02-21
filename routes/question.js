@@ -24,4 +24,7 @@ router.post('/', upload.single('image'), controller.question.post)
 // router.put('/:nim', controller.mahasiswa.put)
 router.delete('/:id', controller.question.delete)
 
+// Admin
+router.get('/dashboard', controller.admin.dashboard)
+
 module.exports = router

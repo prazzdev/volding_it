@@ -9,6 +9,7 @@ const cors = require('cors')
 const port = 3002
 
 const questionRoutes = require('./routes/question')
+const adminRoutes = require('./routes/admin')
 
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended: false}))
@@ -19,8 +20,8 @@ app.use(cors())
 app.use('/assets', express.static('assets'))
 
 app.use(`/question`, questionRoutes)
+app.use('/admin', adminRoutes)
 
-app.use('/admin', )
 app.use((req, res, next) => {
     const error = new Error('Not found')
     error.status = 404
