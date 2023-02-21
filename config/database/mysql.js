@@ -1,7 +1,20 @@
 const Sequelize = require('sequelize')
-const db = new Sequelize('volding_it', 'root', '', {
+const conf = {
+    host: 'bsrvkootqh4bl9quhuws-mysql.services.clever-cloud.com',
     dialect: 'mysql',
-    host: 'localhost'
+    port: 3306,
+    username: 'ubzqcgm9dofipdel',
+    password: 'zeVNe3NzwKeU9zo4Ddyg',
+    database: 'bsrvkootqh4bl9quhuws'
+}
+const db = new Sequelize(conf)
+db
+.authenticate()
+.then(() => {
+    console.log('Connection has been established successfully.')
+})
+.catch(err => {
+    console.error('Unable to connect to the database:', err)
 })
 
 module.exports = db
