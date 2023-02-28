@@ -1,11 +1,14 @@
 const Sequelize = require('sequelize')
+const mysql = require('mysql')
+require('dotenv').config()
+
 const conf = {
-    host: 'bsrvkootqh4bl9quhuws-mysql.services.clever-cloud.com',
+    host: process.env.DB_HOST,
     dialect: 'mysql',
     port: 3306,
-    username: 'ubzqcgm9dofipdel',
-    password: 'zeVNe3NzwKeU9zo4Ddyg',
-    database: 'bsrvkootqh4bl9quhuws'
+    username: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
 }
 const local = {
     host: 'localhost',
@@ -25,20 +28,23 @@ db
     console.error('Unable to connect to the database:', err)
 })
 
-module.exports = db
-
-// const mysql = require('mysql')
 
 // const connection = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: '',
-//     database: 'kuliah'
+//     host, user, password, database
 // })
 
 // connection.connect((err) => {
 //     if(err) throw err
-//     console.log('Koneksi Berhasil')
+//     console.log('Koneksi MYSQL Berhasil')
 // })
 
-// module.exports = connection
+const connection = mysql.createConnection({
+    host: process.env.DB_HOST, user: process.env.DB_USER, password: process.env.DB_PASS, database: process.env.DB_NAME
+})
+connection.connect((err) => {
+    if(err) throw err
+    console.log('Koneksi MYSQL Berhasil')
+})
+
+
+module.exports = db, connection

@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const expressLayouts = require('express-ejs-layouts')
 const cors = require('cors')
 
-const port = 3002
+const port = 3004
 
 const questionRoutes = require('./routes/question')
 const adminRoutes = require('./routes/admin')
@@ -19,6 +19,39 @@ app.use(expressLayouts)
 app.use(cors())
 app.use('/assets', express.static('assets'))
 
+app.get('/', (req, res) => {
+    if(!req.query.apikey) {
+        res.status(401).json({
+            status: res.statusCode,
+            message: 'Unauthorized'
+        })
+    } else {
+        res.status(200).json({
+            status: res.statusCode,
+            message: 'Success',
+            payload: {
+                baseUrl: 'http://localhost:3004',
+                endpoints: [
+                    {
+                        method: 'GET',
+                        path: '/question',
+                        desc: 'Get all questions'
+                    },
+                    {
+                        method: 'GET',
+                        path: '/question/:category',
+                        message: 'Get questions by category',
+                    },
+                    {
+                        method: 'GET',
+                        path: '/question/:category/:stage',
+                        message: 'Get questions by category and stage',
+                    }
+                ]
+            }
+        })
+    }
+})
 app.use(`/question`, questionRoutes)
 app.use('/admin', adminRoutes)
 

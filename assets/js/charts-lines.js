@@ -4,7 +4,7 @@
 const lineConfig = {
   type: 'line',
   data: {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     datasets: [
       {
         label: 'Organic',
@@ -28,6 +28,17 @@ const lineConfig = {
         borderColor: '#7e3af2',
         data: [24, 50, 64, 74, 52, 51, 65],
       },
+      {
+        label: 'Hehe',
+        fill: false,
+        /**
+         * These colors come from Tailwind CSS palette
+         * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
+         */
+        backgroundColor: '#7e3af2',
+        borderColor: 'salmon',
+        data: [52, 70, 54, 44, 32, 51, 45],
+      },
     ],
   },
   options: {
@@ -37,7 +48,7 @@ const lineConfig = {
      * See examples in charts.html to add your own legends
      *  */
     legend: {
-      display: false,
+      display: true,
     },
     tooltips: {
       mode: 'index',
